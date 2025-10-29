@@ -8,6 +8,7 @@ export interface User {
   created_at: string;
   updated_at: string;
   is_active: boolean;
+  user_id?: string; // vínculo con auth.users.id si existe
 }
 
 export const userService = {
@@ -40,23 +41,35 @@ export const userService = {
     return data;
   },
 
-  // Buscar usuario por email
+  // Buscar usuario por email (solo para compatibilidad, usar getProfileByUserId)
   async getUserByEmail(email: string): Promise<User | null> {
     const { data, error } = await supabase
       .from('user')
       .select('*')
       .eq('email', email)
       .eq('is_active', true)
-      .single();
+      .maybeSingle();
 
     if (error) {
-      if (error.code === 'PGRST116') {
-        return null; // Usuario no encontrado
-      }
       throw new Error(`Error al buscar usuario: ${error.message}`);
     }
 
-    return data;
+    return data as User | null;
+  },
+
+  // Obtener perfil por user_id (auth.uid()) bajo RLS
+  async getProfileByUserId(userId: string): Promise<User | null> {
+    const { data, error } = await supabase
+      .from('user')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('is_active', true)
+      .maybeSingle();
+
+    if (error) {
+      throw new Error(`Error al buscar perfil: ${error.message}`);
+    }
+    return data as User | null;
   },
 
   // Verificar credenciales de login

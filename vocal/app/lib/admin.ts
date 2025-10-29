@@ -23,7 +23,7 @@ export class AdminService {
       const { data, error } = await supabase
         .from('user')
         .select('is_admin')
-        .eq('id', user.id)
+        .eq('user_id', user.id)
         .single();
 
       if (error) {
@@ -50,7 +50,7 @@ export class AdminService {
       const { data, error } = await supabase
         .from('user')
         .select('*')
-        .eq('id', user.id)
+        .eq('user_id', user.id)
         .single();
 
       if (error) {

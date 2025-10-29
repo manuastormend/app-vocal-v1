@@ -1,0 +1,239 @@
+# ===========================================
+# VOCAL APP V1 - GITIGNORE
+# ===========================================
+
+# ===========================================
+# DATOS SENSIBLES - CRÍTICO
+# ===========================================
+
+# Configuración con credenciales hardcodeadas
+mobile/src/lib/config.ts
+
+# Archivos SQL con datos personales y contraseñas
+vocal/supabase/fix_user_password.sql
+vocal/supabase/migrate_to_auth_users.sql
+
+# Archivos de configuración local
+mobile/android/local.properties
+mobile/ios/.xcode.env.local
+mobile/ios/.xcode.env
+
+# ===========================================
+# ARCHIVOS DE CLAVES Y CERTIFICADOS
+# ===========================================
+
+# Android keystores
+*.keystore
+*.jks
+*.p12
+*.pfx
+mobile/android/app/debug.keystore
+
+# iOS certificates
+*.p8
+*.p12
+*.mobileprovision
+*.cer
+
+# ===========================================
+# ARCHIVOS DE CONFIGURACIÓN SENSIBLES
+# ===========================================
+
+# Variables de entorno
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.staging
+
+# Google Services
+google-services.json
+GoogleService-Info.plist
+
+# ===========================================
+# DEPENDENCIAS Y BUILD
+# ===========================================
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build directories
+build/
+dist/
+.next/
+out/
+
+# Android build
+mobile/android/app/build/
+mobile/android/build/
+mobile/android/.gradle/
+mobile/android/captures/
+mobile/android/gradle/
+mobile/android/local.properties
+
+# iOS build
+mobile/ios/build/
+mobile/ios/DerivedData/
+mobile/ios/Pods/
+mobile/ios/*.xcworkspace/xcuserdata/
+mobile/ios/*.xcodeproj/xcuserdata/
+mobile/ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Expo
+.expo/
+.expo-shared/
+
+# ===========================================
+# LOGS Y CACHÉ
+# ===========================================
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# ===========================================
+# SISTEMA OPERATIVO
+# ===========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===========================================
+# IDEs Y EDITORES
+# ===========================================
+
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# ===========================================
+# ARCHIVOS TEMPORALES
+# ===========================================
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# ===========================================
+# ARCHIVOS ESPECÍFICOS DEL PROYECTO
+# ===========================================
+
+# Archivos de configuración con datos sensibles
+mobile/src/lib/config.ts
+**/config.ts
+**/config.js
+**/secrets.ts
+**/secrets.js
+
+# Archivos de base de datos local
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos de migración con datos sensibles
+**/migrations/*.sql
+**/supabase/*.sql
+
+# ===========================================
+# NOTAS IMPORTANTES
+# ===========================================
+# 
+# ANTES DE HACER COMMIT:
+# 1. Mover las credenciales a variables de entorno
+# 2. Crear archivos .env.example con valores de ejemplo
+# 3. Actualizar la documentación con instrucciones de configuración
+# 4. Verificar que no hay datos personales en archivos SQL
+# 
+# ARCHIVOS QUE REQUIEREN ATENCIÓN INMEDIATA:
+# - mobile/src/lib/config.ts (mover a .env)
+# - vocal/supabase/fix_user_password.sql (eliminar o sanitizar)
+# - vocal/supabase/migrate_to_auth_users.sql (eliminar o sanitizar)
